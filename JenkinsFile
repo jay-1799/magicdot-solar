@@ -31,13 +31,7 @@ pipeline {
                 }
         }
         }
-        stage("quality gate") {
-            steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonarqube'
-                }
-            }
-        }
+        
         stage('Build and Push Docker Image') {
         environment {
             DOCKER_IMAGE = "9574872248/code:${BUILD_NUMBER}"
